@@ -3,7 +3,7 @@ import { PrismaClient } from "../generated/prisma";
 const prisma = new PrismaClient();
 
 const main = async () => {
-  console.log("hello");
+  // console.log("hello");
   // const result = await prisma.post.create({
   //   data: {
   //     title: "this is title",
