@@ -15,12 +15,12 @@ const main = async () => {
 
   console.log(singleUpdate);
 
-  const multipleUpdate = await prisma.post.update({
+  const multipleUpdate = await prisma.post.updateMany({
     where: {
-      id: 5,
+      title: "this is title",
     },
     data: {
-      title: "Title 5",
+      published: true,
     },
   });
 
