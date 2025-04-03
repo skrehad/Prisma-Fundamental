@@ -7,7 +7,20 @@ const main = async () => {
 
   // find all
   const getAllFromBD = await prisma.post.findMany();
-  console.log(getAllFromBD);
+
+  const findFirst = await prisma.post.findFirst({
+    where: {
+      id: 1,
+    },
+  });
+
+  const findUnique = await prisma.post.findUnique({
+    where: {
+      id: 3,
+    },
+  });
+
+  console.log(findUnique);
 };
 
 main();
