@@ -24,9 +24,11 @@ model Post{
   user User @relation(fields: [authorId], references: [id]) 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  postCategory PostCategory[] // many to many relation
 
   // for change table name
   @@map("posts")
+  
 }
 
 model User{
@@ -59,7 +61,20 @@ model Profile{
 model Category{
   id Int @id @default(autoincrement())
   name String
+  postCategory PostCategory[] // many to many relation
+
   
   // for change table name
   @@map("categories")
+}
+
+model PostCategory{
+  postId Int
+  post Post @relation(fields: [postId],references: [id])
+  categoryId Int
+  category Category @relation(fields: [categoryId],references: [id])
+
+  @@id([postId,categoryId])
+
+  @@map("post_category")
 }
